@@ -12,6 +12,7 @@ import Login from "./Login";
 import NetworkSelection from "./network/NetworkSelection";
 import TransferPage from "./transfer/TransferPage";
 import { config } from "./config/wagmiConfig";
+import XmtpChat from "./xmtp/XmtpChat";
 
 const App: React.FC = () => {
   
@@ -25,6 +26,7 @@ const App: React.FC = () => {
               <Route path="/" element={<Login />} />
               <Route path="/network" element={<NetworkSelection />} />
               <Route path="/transfer" element={<TransferPage />} />
+              <Route path="/xmtp" element={<XmtpChat />} />
             </Routes>
           </Router>
         </RainbowKitProvider>
