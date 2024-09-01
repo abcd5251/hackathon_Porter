@@ -78,7 +78,8 @@ const App = () => {
 
       {/* Final Transfer Summary */}
       <div className="text-center text-lg font-semibold mt-8">
-        Transfer {totalBalance.toFixed(2)} USDT from {selectedNetworks.join(", ")} to {chain?.name} chain address {address ? `(${address.slice(0, 8)}...${address.slice(-6)})` : ''}.
+        Transfer <span className="text-red-500">{totalBalance.toFixed(2)} USDT</span><br />
+        from {selectedNetworks.join(", ")} to <span className="text-red-500">{chain?.name}</span> chain address {address ? `(${address.slice(0, 8)}...${address.slice(-6)})` : ''}.
       </div>
 
       <div className="flex justify-between mt-6">

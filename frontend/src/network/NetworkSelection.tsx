@@ -3,7 +3,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useNavigate } from "react-router-dom";
 import '../index.css';
 
-// Import the network configuration
 import { networks } from "../config/networksConfig";
 
 const NetworkSelection: React.FC = () => {
@@ -62,8 +61,10 @@ const NetworkSelection: React.FC = () => {
             Cancel
           </button>
           <button
-            className={`bg-gray-200 text-gray-400 px-4 py-2 rounded-lg ${
-              selectedNetworks.length > 0 ? "cursor-pointer hover:bg-purple-600 hover:text-white" : "cursor-not-allowed"
+            className={`px-4 py-2 rounded-lg ${
+              selectedNetworks.length > 0
+                ? "bg-purple-600 text-white cursor-pointer"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
             disabled={selectedNetworks.length === 0}
             onClick={handleNext}
