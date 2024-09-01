@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useNavigate } from "react-router-dom"; // Assuming you're using React Router
+import { useNavigate } from "react-router-dom";
 import '../index.css';
 
-const networks = [
-  { name: "Ethereum", logo: "https://s2.coinmarketcap.com/static/img/coins/200x200/1027.png" },
-  { name: "Arbitrum", logo: "https://pbs.twimg.com/profile_images/1636368041188511745/CoZ-_TLh_400x400.png" },
-  { name: "Polygon", logo: "https://s3.coinmarketcap.com/static-gravity/image/b8db9a2ac5004c1685a39728cdf4e100.png" },
-  { name: "Optimism", logo: "https://moralis.io/wp-content/uploads/web3wiki/28optimism/637aee5401271816b742f1d0_01HdMDRzEw5i8L7vAxa2TtoWOFBrT8ybtRTaRv_InkE.jpeg" },
-  { name: "Base", logo: "https://rdbk.rootdata.com/uploads/public/b6/1677162284082.jpg" },
-  { name: "Hedera", logo: "https://ethglobal.b-cdn.net/organizations/bdi3h/square-logo/default.png" },
-  { name: "Linea", logo: "https://image.theblockbeats.info/headimage/2023-08-09/395e01b67465ed3a55ff13786ab6a650d013d6e5.png?x-oss-process=image/quality,q_50/format,webp" },
-];
+// Import the network configuration
+import { networks } from "../config/networksConfig";
 
 const NetworkSelection: React.FC = () => {
   const [selectedNetworks, setSelectedNetworks] = useState<string[]>([]);
@@ -37,8 +30,9 @@ const NetworkSelection: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6">Choose Network</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">You want to transfer from</h2>
         <div className="grid grid-cols-3 gap-4 mb-6">
-          {networks.slice(0, 6).map((network) => (
+          {networks.slice(0, 7).map((network) => (
             <div
               key={network.name}
               className={`bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 ${
@@ -78,7 +72,7 @@ const NetworkSelection: React.FC = () => {
           </button>
         </div>
       </div>
-      <div className="flex items-center mt-6">
+      <div className="fixed top-0 right-5 m-4">
         <ConnectButton showBalance={true} />
       </div>
     </div>
