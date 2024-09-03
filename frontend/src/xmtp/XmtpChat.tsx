@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useAccount, useWalletClient } from 'wagmi';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Client } from "@xmtp/xmtp-js";
+import { Wallet } from "ethers";
 
 const SendMessage = () => {
   const { address, chain } = useAccount();
-  const { data: signer } = useWalletClient();
+  
+  const signer = useMemo(() => Wallet.createRandom(), []);
+  
   const [recipient, setRecipient] = useState('');
   const [message, setMessage] = useState('');
 

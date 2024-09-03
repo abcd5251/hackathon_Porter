@@ -11,8 +11,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from "./Login";
 import NetworkSelection from "./network/NetworkSelection";
 import TransferPage from "./transfer/TransferPage";
-import { config } from "./config/wagmiConfig";
+import ReceivePage from "./receive/ReceivePage";
 import XmtpChat from "./xmtp/XmtpChat";
+import { config } from "./config/wagmiConfig";
+
+
 
 const App: React.FC = () => {
   
@@ -26,6 +29,7 @@ const App: React.FC = () => {
               <Route path="/" element={<Login />} />
               <Route path="/network" element={<NetworkSelection />} />
               <Route path="/transfer" element={<TransferPage />} />
+              <Route path="/receive" element={<ReceivePage />} />
               <Route path="/xmtp" element={<XmtpChat />} />
             </Routes>
           </Router>
