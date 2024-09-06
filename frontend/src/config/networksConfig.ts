@@ -6,4 +6,5 @@ export const networks = [
     { name: "Base", logo: "/images/Base.png" },
     { name: "Hedera", logo: "/images/Hedera.png" },
     { name: "Linea", logo: "/images/Linea.png" },
+    { name: "Avalanche", logo: "/images/Avalanche.png" },
   ];

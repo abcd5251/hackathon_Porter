@@ -14,28 +14,30 @@ import TransferPage from "./transfer/TransferPage";
 import ReceivePage from "./receive/ReceivePage";
 import XmtpChat from "./xmtp/XmtpChat";
 import { config } from "./config/wagmiConfig";
-
+import { TokenProvider } from "./context/TokenContext";
 
 
 const App: React.FC = () => {
   
   const queryClient = new QueryClient();
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/network" element={<NetworkSelection />} />
-              <Route path="/transfer" element={<TransferPage />} />
-              <Route path="/receive" element={<ReceivePage />} />
-              <Route path="/xmtp" element={<XmtpChat />} />
-            </Routes>
-          </Router>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <TokenProvider>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/network" element={<NetworkSelection />} />
+                <Route path="/transfer" element={<TransferPage />} />
+                <Route path="/receive" element={<ReceivePage />} />
+                <Route path="/xmtp" element={<XmtpChat />} />
+              </Routes>
+            </Router>
+          </RainbowKitProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </TokenProvider>
   );
 };
 

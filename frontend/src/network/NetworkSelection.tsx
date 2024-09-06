@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 import '../index.css';
 
 import { networks } from "../config/networksConfig";
+import { useTokenDetails } from "../context/TokenContext";
 
 const NetworkSelection: React.FC = () => {
   const [selectedNetworks, setSelectedNetworks] = useState<string[]>([]);
+  const [tokenAmount, setTokenAmount] = useState<string>("");
   const navigate = useNavigate();
+  
+  const { tokenDetails } = useTokenDetails();
 
   const toggleNetworkSelection = (networkName: string) => {
     setSelectedNetworks((prev) =>
@@ -19,23 +23,34 @@ const NetworkSelection: React.FC = () => {
 
   const handleCancel = () => {
     setSelectedNetworks([]);
+    setTokenAmount("");
   };
 
   const handleNext = () => {
-    navigate("/transfer", { state: { selectedNetworks } });
+    navigate("/transfer", { state: { selectedNetworks, tokenAmount } });
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Choose Network</h2>
-        <h2 className="text-2xl font-bold text-center mb-6">You want to transfer from</h2>
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {networks.slice(0, 7).map((network) => (
+      <div className="w-full max-w-[650px]">
+        <h2 className="text-5xl font-bold text-center mb-6 text-black">Choose Network</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-black">
+          Enter the token amount you want to receive
+        </h2>
+        <input
+          type="number"
+          value={tokenAmount}
+          onChange={(e) => setTokenAmount(e.target.value)}
+          placeholder="Enter token amount"
+          className="w-full p-2 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+        />
+        <h2 className="text-2xl font-bold text-center mb-6 text-black">You want to transfer from</h2>
+        <div className="grid grid-cols-4 gap-4 mb-6">
+          {networks.slice(0, 8).map((network) => (
             <div
               key={network.name}
               className={`bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 ${
-                selectedNetworks.includes(network.name) ? "border-2 border-purple-600" : ""
+                selectedNetworks.includes(network.name) ? "border-4 border-black" : ""
               }`}
               onClick={() => toggleNetworkSelection(network.name)}
               style={{ width: "120px", height: "160px" }}
@@ -48,25 +63,25 @@ const NetworkSelection: React.FC = () => {
               />
               <span className="text-gray-700 text-center">{network.name}</span>
               <div className="mt-2 bg-white rounded-lg shadow p-1 text-sm text-gray-700">
-                Amount: 0.00
+                USDC: {tokenDetails[network.name]?.balance.toFixed(2) || 0}
               </div>
             </div>
           ))}
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-200">
           <button
             className="bg-white text-purple-600 border border-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50"
             onClick={handleCancel}
           >
-            Cancel
+            Reset
           </button>
           <button
             className={`px-4 py-2 rounded-lg ${
-              selectedNetworks.length > 0
-                ? "bg-purple-600 text-white cursor-pointer"
+              selectedNetworks.length > 0 && tokenAmount
+                ? "bg-yellow-600 text-white cursor-pointer"
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
-            disabled={selectedNetworks.length === 0}
+            disabled={selectedNetworks.length === 0 || !tokenAmount}
             onClick={handleNext}
           >
             Next
@@ -75,6 +90,9 @@ const NetworkSelection: React.FC = () => {
       </div>
       <div className="fixed top-0 right-5 m-4">
         <ConnectButton showBalance={true} />
+      </div>
+      <div className="fixed top-0 left-5 m-4">
+        <img src="/images/logo.jpg" alt="Logo" className="w-16 h-16" />
       </div>
     </div>
   );
