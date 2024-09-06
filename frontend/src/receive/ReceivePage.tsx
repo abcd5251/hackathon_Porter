@@ -5,6 +5,7 @@ import { useAccount } from 'wagmi';
 import axios from 'axios';
 import { toast, ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Chatbox from "../xmtp/chatbotXTMP";
 
 const ReceivePage = () => {
   const location = useLocation();
@@ -14,9 +15,15 @@ const ReceivePage = () => {
   
   const [status, setStatus] = useState(Array(selectedNetworks.length).fill('transferring'));
   const [allSuccessful, setAllSuccessful] = useState(false);
+  const [showChat, setShowChat] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      sender: "assistant",
+      text: "2024/9/07 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
+    },
+  ]);
 
   const sendApiRequest = async (network, index) => {
-    
     try {
       const response = await axios.post('https://shines-server.onrender.com/process_text', {
         twitter_acount: network,
@@ -25,26 +32,28 @@ const ReceivePage = () => {
       await new Promise(resolve => setTimeout(resolve, 3000));
 
       if (response.status === 200) {
-        
         setStatus(prevStatus => {
           const newStatus = [...prevStatus];
           newStatus[index] = 'Successful';
           return newStatus;
         });
-        
       }
     } catch (error) {
       console.error(`Error sending data to ${network}:`, error);
     }
-    
   };
 
   useEffect(() => {
     const processNetworksSequentially = async () => {
       for (let i = 0; i < selectedNetworks.length; i++) {
         await sendApiRequest(selectedNetworks[i], i);
-        // Show toast notification after each successful transfer
         toast.success(`${selectedNetworks[i]} transfer successfully!`);
+        // Add a new message for each successful transfer
+        const newMessage = `${selectedNetworks[i]} transfer ${transferBalances[selectedNetworks[i]]} to Sepolia !`;
+        setMessages(prevMessages => [
+          ...prevMessages,
+          { sender: "assistant", text: newMessage },
+        ]);
       }
     };
     processNetworksSequentially();
@@ -65,13 +74,12 @@ const ReceivePage = () => {
   }
 
   return (
-    
     <div className="w-full mx-auto p-4 max-w-[650px]">
       <h2 className="text-5xl font-bold text-center mb-6 text-gray-300">Receive Tokens</h2>
       <div className="flex justify-between items-start space-x-4">
         
         {/* Tokens Section */}
-        <div className="w-3/4">  {/* Increased size to 3/4 */}
+        <div className="w-3/4">  
           <h2 className="text-xl font-semibold mb-4 text-center">Tokens</h2>
           <div className="border rounded-lg p-4">
             <table className="w-full table-auto">
@@ -94,7 +102,7 @@ const ReceivePage = () => {
                       <span className="font-semibold">{network}</span>
                     </td>
                     <td className="px-4 py-2">USDC</td>
-                    <td className="px-4 py-2 text-right">{transferBalances[network]} USDC</td>
+                    <td className="px-4 py-2 text-right">{transferBalances[network].toFixed(2)} USDC</td>
                   </tr>
                 ))}
               </tbody>
@@ -148,6 +156,17 @@ const ReceivePage = () => {
         transition={Bounce}
       />
 
+      {/* Chat Button */}
+      <button
+        className="fixed bottom-5 right-5 bg-purple-600 text-white p-3 rounded-full shadow-lg"
+        onClick={() => setShowChat((prev) => !prev)}
+      >
+        💬 XMTP Recording
+      </button>
+
+      {/* Chatbox */}
+      {showChat && <Chatbox messages={messages} setMessages={setMessages} />}
+      
       <style>
         {`
           @keyframes bounce-right {
@@ -164,7 +183,6 @@ const ReceivePage = () => {
         <img src="/images/logo.jpg" alt="Logo" className="w-16 h-16" />
       </div>
     </div>
-    
   );
 };
 

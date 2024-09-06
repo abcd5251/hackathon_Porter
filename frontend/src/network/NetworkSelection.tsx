@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useNavigate } from "react-router-dom";
-import '../index.css';
-
+import "../index.css";
 import { networks } from "../config/networksConfig";
 import { useTokenDetails } from "../context/TokenContext";
+import Chatbox from "../xmtp/chatbotXTMP";
 
 const NetworkSelection: React.FC = () => {
   const [selectedNetworks, setSelectedNetworks] = useState<string[]>([]);
   const [tokenAmount, setTokenAmount] = useState<string>("");
+  const [showChat, setShowChat] = useState<boolean>(false);
   const navigate = useNavigate();
-  
   const { tokenDetails } = useTokenDetails();
+  const [messages, setMessages] = useState([
+    {
+      sender: "assistant",
+      text: "2024/9/07 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
+    },
+  ]);
 
   const toggleNetworkSelection = (networkName: string) => {
     setSelectedNetworks((prev) =>
@@ -88,6 +94,18 @@ const NetworkSelection: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {/* Chat Button */}
+      <button
+        className="fixed bottom-5 right-5 bg-purple-600 text-white p-3 rounded-full shadow-lg"
+        onClick={() => setShowChat((prev) => !prev)}
+      >
+        💬 XMTP Recording
+      </button>
+
+      {/* Chatbox */}
+      {showChat && <Chatbox messages={messages} setMessages={setMessages} />}
+
       <div className="fixed top-0 right-5 m-4">
         <ConnectButton showBalance={true} />
       </div>
