@@ -1,4 +1,3 @@
-// Login.tsx
 import React, { useEffect } from "react";
 import { useAccount } from "wagmi";
 import { useNavigate } from "react-router-dom";
@@ -24,11 +23,44 @@ const Login: React.FC = () => {
         left: 0,
         right: 0,
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         fontFamily: "sans-serif",
       }}
     >
+      {/* Logo */}
+      <img
+        src="/images/logo.jpg" // Ensure this path points to your logo
+        alt="Logo"
+        style={{ width: "200px", marginBottom: "100px" }} // Adjust size as needed
+      />
+
+      {/* Description */}
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "50px",
+          padding: "0 10px",
+          color: "#ffffff",
+          fontWeight: "bold", // Bold text
+        }}
+      >
+        Unlock the full potential of your idle USDC across multiple chains
+      </p>
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "50px",
+          padding: "0 10px",
+          color: "#ffffff",
+          fontWeight: "bold", // Bold text
+        }}
+      >
+        Efficiently transfer to a target chain for usage
+      </p>
+
+      {/* Connect Button */}
       <ConnectButton showBalance={true} />
     </div>
   );
