@@ -176,7 +176,7 @@ const TransferPage = () => {
               className="mr-2"
             />
             <label htmlFor="bestAchievePrice" className="text-white">
-              Best Achieve Price
+              Best Achieving Gas Price
             </label>
           </div>
         </div>

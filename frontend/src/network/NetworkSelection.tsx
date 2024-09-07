@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
+import { useLocation } from "react-router-dom";
 import { networks } from "../config/networksConfig";
 import { useTokenDetails } from "../context/TokenContext";
 import Chatbox from "../xmtp/chatbotXTMP";
@@ -12,12 +13,23 @@ const NetworkSelection: React.FC = () => {
   const [showChat, setShowChat] = useState<boolean>(false);
   const navigate = useNavigate();
   const { tokenDetails } = useTokenDetails();
+  const location = useLocation();
+  const { newMessage } = location.state || {}; 
   const [messages, setMessages] = useState([
     {
       sender: "assistant",
       text: "2024/9/07 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
     },
   ]);
+  useEffect(() => {
+    console.log("update", newMessage);
+    if (newMessage) {
+      setMessages((prevMessages) => {
+        const updatedMessages = [...prevMessages, { sender: "assistant", text: newMessage }];
+        return updatedMessages.slice(0, 2);
+      });
+    }
+  }, [newMessage]);
 
   const toggleNetworkSelection = (networkName: string) => {
     setSelectedNetworks((prev) =>

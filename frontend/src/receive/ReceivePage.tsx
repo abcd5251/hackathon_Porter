@@ -19,7 +19,7 @@ const ReceivePage = () => {
   const [messages, setMessages] = useState([
     {
       sender: "assistant",
-      text: "2024/9/07 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
+      text: "2024/9/07 Transfer 10 USDC from Base, Optimism to Sepolia",
     },
   ]);
 
@@ -48,12 +48,6 @@ const ReceivePage = () => {
       for (let i = 0; i < selectedNetworks.length; i++) {
         await sendApiRequest(selectedNetworks[i], i);
         toast.success(`${selectedNetworks[i]} transfer successfully!`);
-        // Add a new message for each successful transfer
-        const newMessage = `${selectedNetworks[i]} transfer ${transferBalances[selectedNetworks[i]]} to Sepolia !`;
-        setMessages(prevMessages => [
-          ...prevMessages,
-          { sender: "assistant", text: newMessage },
-        ]);
       }
     };
     processNetworksSequentially();
@@ -66,7 +60,12 @@ const ReceivePage = () => {
   }, [status]);
 
   const handleReturn = () => {
-    navigate('/network');
+    const newMessage = "2024/9/09 Transfer 10 USDC from Arbitrum, Avalanche, Optimism to Sepolia";
+    navigate('/network', {
+      state: {
+        newMessage,
+      },
+    });
   };
 
   if (selectedNetworks.length === 0) {
