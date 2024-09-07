@@ -29,21 +29,28 @@ const Login: React.FC = () => {
         fontFamily: "sans-serif",
       }}
     >
+      {/* Banner Logo */}
+      <img
+        src="/images/banner.png"
+        alt="Banner"
+        style={{ width: "500px", marginBottom: "20px" }} 
+      />
+
       {/* Logo */}
       <img
-        src="/images/logo.jpg" // Ensure this path points to your logo
+        src="/images/logo.png" 
         alt="Logo"
-        style={{ width: "200px", marginBottom: "100px" }} // Adjust size as needed
+        style={{ width: "180px", marginBottom: "40px" }} 
       />
 
       {/* Description */}
       <p
         style={{
           textAlign: "center",
-          marginBottom: "50px",
+          marginBottom: "20px",
           padding: "0 10px",
           color: "#ffffff",
-          fontWeight: "bold", // Bold text
+          fontWeight: "bold",
         }}
       >
         Unlock the full potential of your idle USDC across multiple chains
@@ -54,7 +61,7 @@ const Login: React.FC = () => {
           marginBottom: "50px",
           padding: "0 10px",
           color: "#ffffff",
-          fontWeight: "bold", // Bold text
+          fontWeight: "bold", 
         }}
       >
         Efficiently transfer to a target chain for usage
