@@ -19,7 +19,7 @@ const ReceivePage = () => {
   const [messages, setMessages] = useState([
     {
       sender: "assistant",
-      text: "2024/9/07 Transfer 10 USDC from Base, Optimism to Sepolia",
+      text: "2024/9/7 Transfer 10 USDC from Base, Optimism to Sepolia",
     },
   ]);
 
@@ -29,7 +29,7 @@ const ReceivePage = () => {
         twitter_acount: network,
         content: 'bb',
       });
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise(resolve => setTimeout(resolve, 5000));
 
       if (response.status === 200) {
         setStatus(prevStatus => {
@@ -60,7 +60,7 @@ const ReceivePage = () => {
   }, [status]);
 
   const handleReturn = () => {
-    const newMessage = "2024/9/09 Transfer 10 USDC from Arbitrum, Avalanche, Optimism to Sepolia";
+    const newMessage = "2024/9/8 Transfer 70 USDC from Arbitrum, Avalanche, Optimism, Hedera to Sepolia";
     navigate('/network', {
       state: {
         newMessage,

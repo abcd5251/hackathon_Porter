@@ -12,6 +12,8 @@ import {
     arbitrum,
     optimism,
     hedera,
+    linea,
+    avalanche
   } from "wagmi/chains";
 import {
     getDefaultConfig,
@@ -20,7 +22,7 @@ import {
 export const config = getDefaultConfig({
     appName: "My RainbowKit App",
     projectId: "04309ed1007e77d1f119b85205bb779d",
-    chains: [mainnet, sepolia, polygon, arbitrum, optimism, hedera],
+    chains: [mainnet, sepolia, polygon, arbitrum, optimism, hedera, linea, avalanche],
     transports: {
       [mainnet.id]: http(),
       [sepolia.id]: http(),
@@ -28,6 +30,8 @@ export const config = getDefaultConfig({
       [polygon.id]: http(),
       [arbitrum.id]: http(),
       [optimism.id]: http(),
+      [linea.id]: http(),
+      [avalanche.id]: http(),
     },
     wallets: [
       {

@@ -1,5 +1,5 @@
 export const networks = [
-    { name: "Ethereum", logo: "/images/Ethereum.png" },
+    { name: "Sepolia", logo: "/images/Ethereum.png" },
     { name: "Arbitrum", logo: "/images/Arbitrum.png" },
     { name: "Polygon", logo: "/images/Polygon.png" },
     { name: "Optimism", logo: "/images/Optimism.png" },

@@ -1,10 +1,10 @@
 export const tokenDetails = {
-    Ethereum: { name: "eth", balance: 8232.36 },
-    Arbitrum: { name: "arb", balance: 1123.53 },
-    Polygon: { name: "matic", balance: 2.12 },
-    Optimism: { name: "op", balance: 1.13 },
-    Base: { name: "eth", balance: 432.56 },
-    Hedera: { name: "eth", balance: 432.89 },
-    Linea: { name: "eth", balance: 321.76 },
-    Avalanche: { name: "eth", balance: 210.3 },
+    Sepolia: { name: "USDC", balance: 7 },
+    Arbitrum: { name: "USDC", balance: 40 },
+    Polygon: { name: "USDC", balance: 10 },
+    Optimism: { name: "USDC", balance: 60 },
+    Base: { name: "USDC", balance: 0},
+    Hedera: { name: "USDC", balance: 10 },
+    Linea: { name: "USDC", balance: 0},
+    Avalanche: { name: "USDC", balance: 20 },
   };

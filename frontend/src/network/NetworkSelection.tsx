@@ -18,7 +18,7 @@ const NetworkSelection: React.FC = () => {
   const [messages, setMessages] = useState([
     {
       sender: "assistant",
-      text: "2024/9/07 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
+      text: "2024/9/7 Transfer 10 USDC from Avalanche, Optimism to Sepolia",
     },
   ]);
   useEffect(() => {
@@ -53,13 +53,13 @@ const NetworkSelection: React.FC = () => {
       <div className="w-full max-w-[650px]">
         <h2 className="text-5xl font-bold text-center mb-6 " style={{color: "rgb(26 55 31)"}}>Choose Network</h2>
         <h2 className="text-2xl font-bold text-center mb-6" style={{color: "rgb(26 55 31)"}}>
-          Enter the token amount you want to receive
+          Enter USDC amount you want to receive
         </h2>
         <input
           type="number"
           value={tokenAmount}
           onChange={(e) => setTokenAmount(e.target.value)}
-          placeholder="Enter token amount"
+          placeholder="Enter USDC amount"
           className="w-full p-2 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-900"
         />
         <h2 className="text-2xl font-bold text-center mb-6" style={{color: "rgb(26 55 31)"}}>You want to transfer from</h2>
@@ -124,7 +124,7 @@ const NetworkSelection: React.FC = () => {
         <ConnectButton showBalance={true} />
       </div>
       <div className="fixed top-0 left-5 m-4">
-        <img src="/images/banner.png" alt="Logo" className="w-16" />
+        <img src="/images/banner.png" alt="Logo" className="w-20" />
       </div>
     </div>
   );

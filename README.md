@@ -1,11 +1,21 @@
 # hackathon_Porter
 An app that helps users easily optimize the use of idle funds across different chains, maximizing the utilization of their assets.
 
+# Contract detail
+Visit https://github.com/flyinglimao/harryporter-contracts/tree/27dddadccc7cfdb5dcd79bd8a5dd2e0aa3758a49 for more detail
 
+# Execution
+To run frontend
+```bash
+cd ./frontend
+```
+Execute
+```bash
+pnpm install 
+pnpm run start
+```
 
-
-
-# Deployment
+# Contract Deployment detail
 - Sepolia
     - Bundler https://rpc.zerodev.app/api/v2/bundler/059a8305-2e0d-4bec-a3cf-e654beff6556
     - Paymaster https://rpc.zerodev.app/api/v2/paymaster/059a8305-2e0d-4bec-a3cf-e654beff6556

@@ -51,7 +51,7 @@ const TransferPage = () => {
   };
 
   const handleBestAchievePrice = () => {
-    const bestNetworks = ["Base", "Optimism", "Arbitrum", "Avalanche"];
+    const bestNetworks = ["Base", "Optimism", "Arbitrum"];
     const newBalances = {};
 
     selectedNetworks.forEach((network) => {
@@ -93,13 +93,16 @@ const TransferPage = () => {
       Object.keys(transferBalances).length > 0
     ) {
       const updatedTokenDetails = { ...tokenDetails };
+      var addToken = 0;
       selectedNetworks.forEach((network) => {
         updatedTokenDetails[network].balance -= transferBalances[network];
+        addToken += transferBalances[network];
       });
+      updatedTokenDetails["Sepolia"].balance += addToken;
       setTokenDetails(updatedTokenDetails);
 
       // Add new message to Chatbox
-      const newMessage = `2024/9/08 Transfer ${totalBalance} USDC from ${selectedNetworks.join(
+      const newMessage = `2024/9/8 Transfer ${totalBalance} USDC from ${selectedNetworks.join(
         ", "
       )} to ${chain?.name}`;
       setMessages((prevMessages) => [
@@ -207,7 +210,7 @@ const TransferPage = () => {
           </div>
           <div className="text-lg font-semibold text-black mt-6">
             Transfer{" "}
-            <span className="text-red-500">{totalBalance.toFixed(2)} USDT</span>
+            <span className="text-red-500">{totalBalance.toFixed(2)} USDC</span>
             <br />
             from {selectedNetworks.join(", ")} to{" "}
             <span className="text-red-500">{chain?.name}</span> chain address{" "}
