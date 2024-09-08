@@ -115,26 +115,26 @@ const TransferPage = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
-      <h2 className="text-5xl font-bold text-center mb-6 text-gray-300">
+      <h2 className="text-5xl font-bold text-center mt-20 mb-10 text-green-900">
         Confirm your transfer
       </h2>
       <div className="flex justify-between items-start space-x-4">
         {/* From Section */}
         <div className="w-2/3">
           <h2 className="text-xl font-semibold mb-4 text-center">From</h2>
-          <div className="border rounded-lg p-4">
+          <div className="border rounded-lg p-4 border-green-900 bg-white bg-opacity-50">
             <table className="w-full text-left table-auto">
               <thead>
-                <tr className="border-b">
-                  <th className="font-semibold text-gray-300">Token</th>
-                  <th className="font-semibold text-gray-300">Wallet Balance</th>
-                  <th className="font-semibold text-gray-300">Transfer Balance</th>
-                  <th className="font-semibold text-gray-300">Final</th>
+                <tr className="border-b border-green-900">
+                  <th className="font-semibold text-green-900">Token</th>
+                  <th className="font-semibold text-green-900">Wallet Balance</th>
+                  <th className="font-semibold text-green-900">Transfer Balance</th>
+                  <th className="font-semibold text-green-900">Final</th>
                 </tr>
               </thead>
               <tbody>
                 {tokens.map((token, index) => (
-                  <tr key={index} className="border-b">
+                  <tr key={index} className="border-b border-green-900">
                     <td className="flex items-center py-2">
                       <img
                         src={`/images/${token.icon}.png`}
@@ -143,7 +143,7 @@ const TransferPage = () => {
                       />
                       <div>
                         <div className="font-semibold">{token.icon}</div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-green-900">
                           {token.name}
                         </div>
                       </div>
@@ -175,14 +175,14 @@ const TransferPage = () => {
               onChange={handleToggleBestAchievePrice}
               className="mr-2"
             />
-            <label htmlFor="bestAchievePrice" className="text-white">
+            <label htmlFor="bestAchievePrice" className="text-black">
               Best Achieving Gas Price
             </label>
           </div>
         </div>
 
         {/* Arrow Icon */}
-        <div className="flex flex-col items-center justify-center w-16 h-[312px]">
+        <div className="flex flex-col items-center justify-center w-16 h-[170px]">
           <svg
             className="w-8 h-8 text-blue-500 animate-bounce-right"
             fill="none"
@@ -202,10 +202,10 @@ const TransferPage = () => {
         {/* To Section */}
         <div className="w-1/2">
           <h2 className="text-xl font-semibold mb-4 text-center">To</h2>
-          <div className="border rounded-lg p-4 w-200">
+          <div className="border rounded-lg p-4 w-200 border-green-900 bg-white bg-opacity-50">
             <ConnectButton showBalance={true} />
           </div>
-          <div className="text-lg font-semibold text-white mt-6">
+          <div className="text-lg font-semibold text-black mt-6">
             Transfer{" "}
             <span className="text-red-500">{totalBalance.toFixed(2)} USDT</span>
             <br />
@@ -221,13 +221,13 @@ const TransferPage = () => {
       <div className="flex justify-between mt-6">
         <button
           onClick={handleBackClick}
-          className="bg-white text-purple-600 border border-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50"
+          className="bg-white text-green-900 border border-green-900 px-4 py-2 rounded-lg hover:bg-purple-50"
         >
           Back
         </button>
         <button
           onClick={handleConfirmClick}
-          className="px-4 py-2 rounded-lg bg-yellow-600"
+          className="px-4 py-2 rounded-lg bg-blue-600 text-white"
         >
           Confirm
         </button>
@@ -235,7 +235,7 @@ const TransferPage = () => {
 
       {/* Chat Button */}
       <button
-        className="fixed bottom-5 right-5 bg-purple-600 text-white p-3 rounded-full shadow-lg"
+        className="fixed bottom-5 right-5 bg-green-900 text-white p-3 rounded-full shadow-lg"
         onClick={() => setShowChat((prev) => !prev)}
       >
         💬 XMTP Recording
@@ -259,6 +259,9 @@ const TransferPage = () => {
         }
       `}
       </style>
+      <div className="fixed top-0 left-5 m-4">
+        <img src="/images/banner.png" alt="Logo" className="w-16" />
+      </div>
     </div>
   );
 };

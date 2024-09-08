@@ -51,8 +51,8 @@ const NetworkSelection: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-[650px]">
-        <h2 className="text-5xl font-bold text-center mb-6 text-black">Choose Network</h2>
-        <h2 className="text-2xl font-bold text-center mb-6 text-black">
+        <h2 className="text-5xl font-bold text-center mb-6 " style={{color: "rgb(26 55 31)"}}>Choose Network</h2>
+        <h2 className="text-2xl font-bold text-center mb-6" style={{color: "rgb(26 55 31)"}}>
           Enter the token amount you want to receive
         </h2>
         <input
@@ -60,9 +60,9 @@ const NetworkSelection: React.FC = () => {
           value={tokenAmount}
           onChange={(e) => setTokenAmount(e.target.value)}
           placeholder="Enter token amount"
-          className="w-full p-2 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+          className="w-full p-2 mb-6 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-900"
         />
-        <h2 className="text-2xl font-bold text-center mb-6 text-black">You want to transfer from</h2>
+        <h2 className="text-2xl font-bold text-center mb-6" style={{color: "rgb(26 55 31)"}}>You want to transfer from</h2>
         <div className="grid grid-cols-4 gap-4 mb-6">
           {networks.slice(0, 8).map((network) => (
             <div
@@ -88,15 +88,16 @@ const NetworkSelection: React.FC = () => {
         </div>
         <div className="flex justify-between mt-200">
           <button
-            className="bg-white text-purple-600 border border-purple-600 px-4 py-2 rounded-lg hover:bg-purple-50"
+            className="bg-white px-4 py-2 rounded-lg hover:bg-purple-50"
             onClick={handleCancel}
+            style={{border: "rgb(26 55 31) 1px solid"}}
           >
             Reset
           </button>
           <button
             className={`px-4 py-2 rounded-lg ${
               selectedNetworks.length > 0 && tokenAmount
-                ? "bg-yellow-600 text-white cursor-pointer"
+                ? "bg-blue-600 text-white cursor-pointer"
                 : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
             disabled={selectedNetworks.length === 0 || !tokenAmount}
@@ -109,8 +110,9 @@ const NetworkSelection: React.FC = () => {
 
       {/* Chat Button */}
       <button
-        className="fixed bottom-5 right-5 bg-purple-600 text-white p-3 rounded-full shadow-lg"
+        className="fixed bottom-5 right-5 text-white p-3 rounded-full shadow-lg"
         onClick={() => setShowChat((prev) => !prev)}
+        style={{background: "rgb(26 55 31)"}}
       >
         💬 XMTP Recording
       </button>
@@ -122,7 +124,7 @@ const NetworkSelection: React.FC = () => {
         <ConnectButton showBalance={true} />
       </div>
       <div className="fixed top-0 left-5 m-4">
-        <img src="/images/logo.jpg" alt="Logo" className="w-16 h-16" />
+        <img src="/images/banner.png" alt="Logo" className="w-16" />
       </div>
     </div>
   );

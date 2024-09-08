@@ -74,16 +74,16 @@ const ReceivePage = () => {
 
   return (
     <div className="w-full mx-auto p-4 max-w-[650px]">
-      <h2 className="text-5xl font-bold text-center mb-6 text-gray-300">Receive Tokens</h2>
+      <h2 className="text-5xl font-bold text-center mt-20 mb-10 text-green-900">Receive Tokens</h2>
       <div className="flex justify-between items-start space-x-4">
         
         {/* Tokens Section */}
         <div className="w-3/4">  
           <h2 className="text-xl font-semibold mb-4 text-center">Tokens</h2>
-          <div className="border rounded-lg p-4">
+          <div className="border rounded-lg p-4 border-green-900 bg-white bg-opacity-50">
             <table className="w-full table-auto">
               <thead>
-                <tr>
+                <tr className="border-b border-green-900">
                   <th className="px-4 py-2 text-left">Network</th>
                   <th className="px-4 py-2 text-left">Token</th>
                   <th className="px-4 py-2 text-right">Balance</th>
@@ -91,7 +91,7 @@ const ReceivePage = () => {
               </thead>
               <tbody>
                 {selectedNetworks.map((network, index) => (
-                  <tr key={index} className="border-t">
+                  <tr key={index} className="border-t border-green-900">
                     <td className="px-4 py-2 flex items-center">
                       <img
                         src={`/images/${network}.png`}
@@ -110,7 +110,7 @@ const ReceivePage = () => {
         </div>
 
         {/* Arrows Section */}
-        <div className="flex flex-col items-center justify-center w-16 h-[312px]">
+        <div className="flex flex-col items-center justify-center w-16 h-[180px]">
           <svg className="w-8 h-8 text-blue-500 animate-bounce-right" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
           </svg>
@@ -119,10 +119,10 @@ const ReceivePage = () => {
         {/* Receiving Chain Section */}
         <div className="w-2/3">
           <h2 className="text-xl font-semibold mb-4 text-center">Receiving Chain</h2>
-          <div className="border rounded-lg p-4 flex flex-col space-y-4">
+          <div className="border rounded-lg p-4 border-green-900 bg-white bg-opacity-50">
             <ConnectButton showBalance={true} />
           </div>
-          <div className="text-lg font-semibold mt-6 text-white">
+          <div className="text-lg font-semibold mt-6 text-black">
             Receiving <span className="text-red-500">{Object.values(transferBalances).reduce((a, b) => a + b, 0)} USDC</span><br />
             on {chain?.name} chain at address {address ? `${address.slice(0, 8)}...${address.slice(-6)}` : ''}
           </div>
@@ -134,7 +134,7 @@ const ReceivePage = () => {
         <div className="text-center mt-8">
           <button
             onClick={handleReturn}
-            className="px-4 py-2 rounded-lg bg-yellow-600"
+            className="px-4 py-2 rounded-lg bg-blue-600 text-white"
           >
             Home
           </button>
@@ -157,7 +157,7 @@ const ReceivePage = () => {
 
       {/* Chat Button */}
       <button
-        className="fixed bottom-5 right-5 bg-purple-600 text-white p-3 rounded-full shadow-lg"
+        className="fixed bottom-5 right-5 bg-green-900 text-white p-3 rounded-full shadow-lg"
         onClick={() => setShowChat((prev) => !prev)}
       >
         💬 XMTP Recording
@@ -179,7 +179,7 @@ const ReceivePage = () => {
         `}
       </style>
       <div className="fixed top-0 left-5 m-4">
-        <img src="/images/logo.jpg" alt="Logo" className="w-16 h-16" />
+        <img src="/images/banner.png" alt="Logo" className="w-16" />
       </div>
     </div>
   );

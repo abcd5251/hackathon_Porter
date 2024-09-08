@@ -47,23 +47,13 @@ const Login: React.FC = () => {
       <p
         style={{
           textAlign: "center",
-          marginBottom: "20px",
-          padding: "0 10px",
-          color: "#ffffff",
+          padding: "0 12px",
+          marginBottom: "50px",
+          color: "rgb(26 55 31)",
           fontWeight: "bold",
         }}
       >
-        Unlock the full potential of your idle USDC across multiple chains
-      </p>
-      <p
-        style={{
-          textAlign: "center",
-          marginBottom: "50px",
-          padding: "0 10px",
-          color: "#ffffff",
-          fontWeight: "bold", 
-        }}
-      >
+        Unlock the full potential of your idle USDC across multiple chains<br/>
         Efficiently transfer to a target chain for usage
       </p>
 
