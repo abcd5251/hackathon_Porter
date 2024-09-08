@@ -4,6 +4,9 @@ An app that helps users easily optimize the use of idle funds across different c
 # Contract detail
 Visit https://github.com/flyinglimao/harryporter-contracts/tree/27dddadccc7cfdb5dcd79bd8a5dd2e0aa3758a49 for more detail
 
+# Deck
+https://www.canva.com/design/DAGP__vob-I/2s13WWDHBc_pWD_y6DvVQA/edit?utm_content=DAGP__vob-I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 # Execution
 To run frontend
 ```bash
