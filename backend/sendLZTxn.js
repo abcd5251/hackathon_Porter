@@ -78,7 +78,7 @@ async function sendCrossChainTxn(targetNbr) {
     
     try {
         console.log(calls)
-        const tx = await contract.send(calls, {value: ethers.utils.parseEther("0")}); // 可以設置 value 為跨鏈消息支付的額外費用
+        const tx = await contract.send(calls, {value: ethers.utils.parseEther("0")});
         console.log("Transaction sent, hash:", tx.hash);
         
         const receipt = await tx.wait();
