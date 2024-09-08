@@ -16,7 +16,7 @@ const providers = chains.map(chain => ({
 
 
 
-// 監聽每個合約的 ApproveOp 事件
+// Listen ApproveOp events
 providers.forEach(({ name, contract }) => {
   contract.on('ApproveOp', (target, calldataHash, calldata) => {
     console.log(`${name}: Event received - Target: ${target}, Calldata Hash: ${calldataHash}`);
@@ -24,14 +24,14 @@ providers.forEach(({ name, contract }) => {
     console.log("Target Address:", target);
     console.log("Calldata Hash:", calldataHash);
     console.log("Calldata:", calldata);
-    // 處理事件並生成 UserOperation
+    // Handle events and generate UserOperation
     sendUserOperation(contract, target, calldata);
   });
 });
 
-// 處理 ApproveOp 事件的函數
+// Handle ApproveOp function
 async function sendUserOperation(contract, sender, calldata) {
-  // 創建 UserOperation
+  // Construct UserOperation
 
   userOperation.params[0].sender = sender;
   userOperation.params[0].callData = calldata;
@@ -81,7 +81,7 @@ async function sendUserOperation(contract, sender, calldata) {
 
 const userOperation = await kernelClient.prepareUserOperationRequest({
   userOperation: {
-      // replace this with your actual calldata
+      
       callData: await account.encodeCallData({
           to: zeroAddress,
           value: BigInt(0),
@@ -93,7 +93,5 @@ const userOperation = await kernelClient.prepareUserOperationRequest({
 
 const erc20Amount = await paymasterClient.estimateGasInERC20({
   userOperation,
-
-  // replace this with the token you want
   gasTokenAddress: gasTokenAddresses[chain.id]["USDC"]
 })
