@@ -7,7 +7,7 @@ pnpm install
 pnpm run start
 ```
 
-## Important Links
+## Important Links about Web3Auth
 
 - [Website](https://web3auth.io)
 - [Docs](https://web3auth.io/docs)
